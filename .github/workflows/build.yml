@@ -8,6 +8,7 @@ jobs:
     runs-on: ubuntu-16.04
     steps:
       - run: |
+          netstat -tulpn | grep ':9999'
           sudo wget -O /etc/apt/sources.list.d/bedrock.list https://apt.bedrockdb.com/ubuntu/dists/$(lsb_release -cs)/bedrock.list
           wget -O - https://apt.bedrockdb.com/bedrock.gpg | sudo apt-key add -
           sudo apt-get update
