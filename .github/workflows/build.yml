@@ -1,0 +1,19 @@
+name: build
+
+on:
+  push:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+        git clone https://github.com/Expensify/Bedrock.git
+        yes | sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+        yes | sudo apt-get update
+        yes | sudo apt-get install build-essential gcc-9 g++-9 libpcre++-dev zlib1g-dev
+        cd Bedrock
+        make
+        touch bedrock.db
+        ./bedrock -fork
+      - run: /var/log/syslog
