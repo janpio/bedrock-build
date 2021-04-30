@@ -14,11 +14,13 @@ jobs:
           yes | sudo apt-get install build-essential gcc-9 g++-9 libpcre++-dev zlib1g-dev
           cd Bedrock
           make
-          #touch bedrock.db
+          touch bedrock.db
           ./bedrock -clean
       - run: cat /var/log/syslog
         if: ${{ always() }}
       - run: cat bedrock.db
+        if: ${{ always() }}
+      - run: cat Bedrock/bedrock.db
         if: ${{ always() }}
       - run: cat /var/lib/bedrock/bedrock.db
         if: ${{ always() }}
