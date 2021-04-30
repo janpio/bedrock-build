@@ -18,7 +18,10 @@ jobs:
           sudo pkill bedrock
           sleep 3
           sudo netstat -tulpn
-          #mysqladmin -h 127.0.0.1 -u root -proot status
+          bedrock -clean -fork
+          sleep 3
+          sudo netstat -tulpn
+          mysqladmin -h 127.0.0.1 -u root -proot status
       - run: cat /var/log/syslog
         if: ${{ always() }}
       - run: cat bedrock.db
