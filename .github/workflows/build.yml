@@ -13,6 +13,7 @@ jobs:
           wget -O - https://apt.bedrockdb.com/bedrock.gpg | sudo apt-key add -
           sudo apt-get update
           sudo apt-get install bedrock
+          mysqladmin -h 127.0.0.1 -u root -proot status
           touch bedrock.db
           sudo netstat -tulpn
           sudo pkill bedrock
