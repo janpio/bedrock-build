@@ -14,8 +14,8 @@ jobs:
           yes | sudo apt-get install build-essential gcc-9 g++-9 libpcre++-dev zlib1g-dev
           cd Bedrock
           make
-          #touch bedrock.db
-          ./bedrock &
+          touch bedrock.db
+          bedrock -controlPort localhost:3333 -serverHost localhost:3000 -nodeHost localhost:3001 -mysql.host localhost:3307 
       - run: cat /var/log/syslog
         if: ${{ always() }}
       - run: cat bedrock.db
