@@ -15,7 +15,7 @@ jobs:
           cd Bedrock
           make
           touch bedrock.db
-          ./bedrock -fork
+          ./bedrock -fork -clean
       - run: cat /var/log/syslog
         if: ${{ always() }}
       - run: cat bedrock.db
