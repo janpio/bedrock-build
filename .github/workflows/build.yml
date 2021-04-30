@@ -5,22 +5,18 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-16.04
     steps:
       - run: |
-          git clone https://github.com/Expensify/Bedrock.git
-          yes | sudo add-apt-repository ppa:ubuntu-toolchain-r/test
-          yes | sudo apt-get update
-          yes | sudo apt-get install build-essential gcc-9 g++-9 libpcre++-dev zlib1g-dev
-          cd Bedrock
-          make
-          #touch bedrock.db
-          ./bedrock &
+          sudo wget -O /etc/apt/sources.list.d/bedrock.list https://apt.bedrockdb.com/ubuntu/dists/$(lsb_release -cs)/bedrock.list
+          wget -O - https://apt.bedrockdb.com/bedrock.gpg | sudo apt-key add -
+          sudo apt-get update
+          sudo apt-get install bedrock
+          touch bedrock.db
+          bedrock -controlPort localhost:3333 -serverHost localhost:3000 -nodeHost localhost:3001 -mysql.host localhost:3307 
       - run: cat /var/log/syslog
         if: ${{ always() }}
       - run: cat bedrock.db
-        if: ${{ always() }}
-      - run: cat Bedrock/bedrock.db
         if: ${{ always() }}
       - run: cat /var/lib/bedrock/bedrock.db
         if: ${{ always() }}
