@@ -12,7 +12,7 @@ jobs:
           wget -O - https://apt.bedrockdb.com/bedrock.gpg | sudo apt-key add -
           sudo apt-get update
           sudo apt-get install bedrock
-          bedrock
+          bedrock -clean
       - run: cat /var/log/syslog
         if: ${{ always() }}
       - run: cat bedrock.db
