@@ -16,4 +16,4 @@ jobs:
           make
           touch bedrock.db
           ./bedrock -fork
-        - run: /var/log/syslog
+      - run: /var/log/syslog
