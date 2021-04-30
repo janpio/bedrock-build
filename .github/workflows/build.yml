@@ -17,3 +17,5 @@ jobs:
           touch bedrock.db
           ./bedrock -fork -db bedrock.db
       - run: cat /var/log/syslog
+      - run: cat bedrock.db
+      - run: cat /var/lib/bedrock/bedrock.db
