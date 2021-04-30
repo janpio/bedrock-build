@@ -15,7 +15,7 @@ jobs:
           cd Bedrock
           make
           touch bedrock.db
-          bedrock -controlPort localhost:3333 -serverHost localhost:3000 -nodeHost localhost:3001 -mysql.host localhost:3307 
+          #bedrock -controlPort localhost:3333 -serverHost localhost:3000 -nodeHost localhost:3001 -mysql.host localhost:3307 
       - run: cat /var/log/syslog
         if: ${{ always() }}
       - run: cat bedrock.db
