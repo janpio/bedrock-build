@@ -15,8 +15,7 @@ jobs:
           sudo apt-get install bedrock
           touch bedrock.db
           sudo netstat -tulpn
-          bedrock -controlPort localhost:3333 -serverHost localhost:3000 -nodeHost localhost:3001 -mysql.host localhost:3307 
-          sudo netstat -tulpn
+          mysqladmin -h 127.0.0.1 -u root -proot status
       - run: cat /var/log/syslog
         if: ${{ always() }}
       - run: cat bedrock.db
