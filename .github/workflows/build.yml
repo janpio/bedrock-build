@@ -15,5 +15,5 @@ jobs:
           cd Bedrock
           make
           touch bedrock.db
-          ./bedrock -fork
+          ./bedrock -fork -db bedrock.db
       - run: cat /var/log/syslog
