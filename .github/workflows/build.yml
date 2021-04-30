@@ -16,6 +16,7 @@ jobs:
           touch bedrock.db
           sudo netstat -tulpn
           sudo pkill bedrock
+          sleep 3
           sudo netstat -tulpn
           #mysqladmin -h 127.0.0.1 -u root -proot status
       - run: cat /var/log/syslog
